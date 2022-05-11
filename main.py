@@ -8,7 +8,7 @@ buttons = []
 
 BTN_WIDTH = 300
 BTN_HEIGHT = 100
-LINES = 28
+LINES = 10
 
 def window_proc(hwnd: HWND, umsg: UINT, wparam: WPARAM, lparam: LPARAM) -> LRESULT:
     si = SCROLLINFO()
@@ -27,8 +27,9 @@ def window_proc(hwnd: HWND, umsg: UINT, wparam: WPARAM, lparam: LPARAM) -> LRESU
             si.cbSize = sizeof(si)
             si.fMask = ScrollInfoMessage.RANGE | ScrollInfoMessage.PAGE
             si.nMin = 0
-            si.nMax = LINES
-            si.nPage = height.value // BTN_HEIGHT;
+            print(width)
+            si.nMax = BTN_HEIGHT * 5 - 60
+            si.nPage = 1;
             SetScrollInfo(hwnd, ScrollBarConstants.VERT, si_pointer, True)
 
         case WindowMessage.COMMAND:
@@ -38,8 +39,8 @@ def window_proc(hwnd: HWND, umsg: UINT, wparam: WPARAM, lparam: LPARAM) -> LRESU
                 print(filename)
                 rect = RECT()
                 rect_p = pointer(rect)
-                print(GetClientRect(hwnd, rect_p))
-                print(rect.top, rect.bottom, rect.left, rect.right)
+                # print(GetClientRect(hwnd, rect_p))
+                # print(rect.top, rect.bottom, rect.left, rect.right)
         case WindowMessage.VSCROLL:
             si.cbSize = sizeof(si)
             si.fMask = ScrollInfoMessage.ALL
@@ -62,15 +63,16 @@ def window_proc(hwnd: HWND, umsg: UINT, wparam: WPARAM, lparam: LPARAM) -> LRESU
                 case ScrollBarCommands.PAGEDOWN:
                     si.nPos += si.nPage
                 case ScrollBarCommands.THUMBTRACK:
-                    print(si.nPos)
                     si.nPos = si.nTrackPos
-                    print(si.nPos)
 
             si.fMask = ScrollInfoMessage.POS
             SetScrollInfo(hwnd, ScrollBarConstants.VERT, si_pointer, True)
             GetScrollInfo(hwnd, ScrollBarConstants.VERT, si_pointer)
             if(si.nPos != yPos):
-                ScrollWindowEx(hwnd, -0, (yPos - si.nPos), None, None, None, None, 0x0002|0x0004)
+                ScrollWindowEx(hwnd, -0, (yPos - si.nPos), None, None, None, None, 0x0001|0x0002)
+                hdwp = BeginDeferWindowPos(1)
+                recent_hdwp = DeferWindowPos(hdwp, hwnd, None,  0, 0, 100, 100, 0x0020|0x0004|0x0001|0x0002)
+                EndDeferWindowPos(recent_hdwp)
                 UpdateWindow(hwnd)
 
     return DefWindowProcW(hwnd, umsg, wparam, lparam)

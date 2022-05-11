@@ -286,3 +286,15 @@ GetScrollInfo.restype = BOOL
 GetClientRect = user32.GetClientRect
 GetClientRect.argtypes = [HWND, LPRECT]
 GetClientRect.restype = BOOL
+
+BeginDeferWindowPos = user32.BeginDeferWindowPos
+BeginDeferWindowPos.argtypes = [c_int]
+BeginDeferWindowPos.restype = HDWP
+
+DeferWindowPos = user32.DeferWindowPos
+DeferWindowPos.argtypes = [HDWP, HWND, HWND, c_int, c_int, c_int, c_int, c_uint]
+DeferWindowPos.restype = HDWP
+
+EndDeferWindowPos = user32.EndDeferWindowPos
+EndDeferWindowPos.argtypes = [HDWP]
+EndDeferWindowPos.restype = BOOL
