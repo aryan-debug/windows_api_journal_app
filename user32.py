@@ -1,14 +1,23 @@
-import ctypes
 import enum
 from ctypes import *
 from ctypes.wintypes import *
 
-WNDPROC = ctypes.WINFUNCTYPE(c_int, HWND, c_uint, WPARAM, LPARAM)
+WNDPROC = WINFUNCTYPE(c_int, HWND, c_uint, WPARAM, LPARAM)
 LRESULT = c_long
 LONG_PTR = LPARAM
 CW_USEDEFAULT = 0x80000000
-WNDENUMPROC = ctypes.WINFUNCTYPE(BOOL, HWND, LPARAM)
+WNDENUMPROC = WINFUNCTYPE(BOOL, HWND, LPARAM)
+DLGPROC = WINFUNCTYPE(POINTER(c_int), HWND, c_uint, WPARAM, LPARAM)
+MAKEINTRESOURCE = lambda i: LPWSTR(POINTER(ULONG(WORD(i))))
+HCURSOR = HANDLE
 user32 = windll.user32
+DIALOG_BTN = 101
+
+
+def LPVOID_errcheck(result, func, args):
+    if not result:
+        raise WinError()
+    return result
 
 
 class WindowStyles(enum.IntFlag):
@@ -115,20 +124,35 @@ class ButtonStyle(enum.IntFlag):
     RIGHTBUTTON = LEFTTEXT
 
 
-class WNDCLASSEXW(Structure):
+class EditStyles(enum.IntFlag):
+    LEFT = 0x0000
+    CENTER = 0x0001
+    RIGHT = 0x0002
+    MULTILINE = 0x0004
+    UPPERCASE = 0x0008
+    LOWERCASE = 0x0010
+    PASSWORD = 0x0020
+    AUTOVSCROLL = 0x0040
+    AUTOHSCROLL = 0x0080
+    NOHIDESEL = 0x0100
+    OEMCONVERT = 0x0400
+    READONLY = 0x0800
+    WANTRETURN = 0x1000
+    NUMBER = 0x2000
+
+
+class WNDCLASSA(Structure):
     _fields_ = [
-        ("cbSize", c_uint),
-        ("style", c_uint),
+        ("style", UINT),
         ("lpfnWndProc", WNDPROC),
         ("cbClsExtra", c_int),
         ("cbWndExtra", c_int),
-        ("hInstance", HANDLE),
-        ("hIcon", HANDLE),
-        ("hCursor", HANDLE),
-        ("hBrush", HANDLE),
-        ("lpszMenuName", LPCWSTR),
-        ("lpszClassName", LPCWSTR),
-        ("hIconSm", HANDLE),
+        ("hInstance", HINSTANCE),
+        ("hIcon", HICON),
+        ("hCursor", HCURSOR),
+        ("hbrBackground", HBRUSH),
+        ("lpszMenuName", LPCSTR),
+        ("lpszClassName", LPCSTR),
     ]
 
 
@@ -163,6 +187,18 @@ class SCROLLINFO(Structure):
         ("nPage", UINT),
         ("nPos", c_int),
         ("nTrackPos", c_int),
+    ]
+
+
+class DLGTEMPLATE(Structure):
+    _fields_ = [
+        ("style", DWORD),
+        ("dwExtendedStyle", DWORD),
+        ("cdit", WORD),
+        ("x", c_short),
+        ("y", c_short),
+        ("cx", c_short),
+        ("cy", c_short),
     ]
 
 
@@ -211,16 +247,15 @@ def LOWORD(l):
 LPMSG = POINTER(MSG)
 LPCSCROLLINFO = POINTER(SCROLLINFO)
 
+DefWindowProcA = user32.DefWindowProcA
+DefWindowProcA.argtypes = [HWND, UINT, WPARAM, LPARAM]
+DefWindowProcA.restype = LRESULT
 
-DefWindowProcW = user32.DefWindowProcW
-DefWindowProcW.argtypes = [HWND, UINT, WPARAM, LPARAM]
-DefWindowProcW.restype = LRESULT
-
-CreateWindowExW = user32.CreateWindowExW
-CreateWindowExW.argtypes = [
+CreateWindowExA = user32.CreateWindowExA
+CreateWindowExA.argtypes = [
     DWORD,
-    LPCWSTR,
-    LPCWSTR,
+    LPCSTR,
+    LPCSTR,
     DWORD,
     c_int,
     c_int,
@@ -231,13 +266,20 @@ CreateWindowExW.argtypes = [
     HINSTANCE,
     LPVOID,
 ]
-CreateWindowExW.restype = HWND
+CreateWindowExA.restype = HWND
+CreateWindowExA.errcheck = LPVOID_errcheck
 
+LPWNDCLASSA = POINTER(WNDCLASSA)
 
-LPWNDCLASSW = POINTER(WNDCLASSEXW)
-RegisterClassExW = user32.RegisterClassExW
-RegisterClassExW.argtypes = [LPWNDCLASSW]
-RegisterClassExW.restype = ATOM
+GetModuleHandleA = windll.kernel32.GetModuleHandleA
+GetModuleHandleA.argtypes = [LPCSTR]
+GetModuleHandleA.restype = HMODULE
+GetModuleHandleA.errcheck = LPVOID_errcheck
+
+RegisterClassA = user32.RegisterClassA
+RegisterClassA.argtypes = [LPWNDCLASSA]
+RegisterClassA.restype = ATOM
+RegisterClassA.errcheck = LPVOID_errcheck
 
 ShowWindow = user32.ShowWindow
 ShowWindow.argtypes = [HWND, c_int]
@@ -247,25 +289,29 @@ UpdateWindow = user32.UpdateWindow
 UpdateWindow.argtypes = [HWND]
 UpdateWindow.restype = BOOL
 
-GetMessageW = user32.GetMessageW
-GetMessageW.argtypes = [LPMSG, HWND, UINT, UINT]
-GetMessageW.restype = BOOL
+GetMessageA = user32.GetMessageA
+GetMessageA.argtypes = [LPMSG, HWND, UINT, UINT]
+GetMessageA.restype = BOOL
 
 TranslateMessage = user32.TranslateMessage
 TranslateMessage.argtypes = [LPMSG]
 TranslateMessage.restype = BOOL
 
-DispatchMessageW = user32.DispatchMessageW
-DispatchMessageW.argtypes = [LPMSG]
-DispatchMessageW.restype = LRESULT
+DispatchMessageA = user32.DispatchMessageA
+DispatchMessageA.argtypes = [LPMSG]
+DispatchMessageA.restype = BOOL
 
 PostQuitMessage = user32.PostQuitMessage
 PostQuitMessage.argtypes = [c_int]
 PostQuitMessage.restype = None
 
-GetWindowLongPtrW = user32.GetWindowLongPtrW
-GetWindowLongPtrW.argtypes = [HWND, c_int]
-GetWindowLongPtrW.restype = LONG_PTR
+try:
+    GetWindowLongPtrA = user32.GetWindowLongPtrA
+except:
+    GetWindowLongPtrA = user32.GetWindowLongA
+GetWindowLongPtrA.argtypes = [HWND, c_int]
+GetWindowLongPtrA.restype = LONG_PTR
+GetWindowLongPtrA.errcheck = LPVOID_errcheck
 
 GetWindow = user32.GetWindow
 GetWindow.argtypes = [HWND, UINT]
@@ -298,3 +344,27 @@ DeferWindowPos.restype = HDWP
 EndDeferWindowPos = user32.EndDeferWindowPos
 EndDeferWindowPos.argtypes = [HDWP]
 EndDeferWindowPos.restype = BOOL
+
+DestroyWindow = user32.DestroyWindow
+DestroyWindow.argtypes = [HWND]
+DestroyWindow.restype = BOOL
+
+EnumChildWindows = user32.EnumChildWindows
+EnumChildWindows.argtypes = [HWND, WNDENUMPROC, LPARAM]
+EnumChildWindows.restype = BOOL
+
+SendMessageA = user32.SendMessageA
+SendMessageA.argtypes = [HWND, UINT, WPARAM, LPARAM]
+SendMessageA.restype = LRESULT
+
+GetWindow = user32.GetWindow
+GetWindow.argtypes = [HWND, UINT]
+GetWindow.restype = HWND
+
+GetWindowTextA = user32.GetWindowTextA
+GetWindowTextA.argtypes = [HWND, LPSTR, c_int]
+GetWindowTextA.restype = c_int
+
+GetDlgItem = user32.GetDlgItem
+GetDlgItem.argtypes = [HWND, c_int]
+GetDlgItem.restype = HWND

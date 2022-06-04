@@ -1,157 +1,172 @@
-from os import listdir
-from user32 import *
-from button import Button
+from turtle import clear, onclick
+import wingui
 from pathlib import Path
+import os
+from win32.user32 import *
+import cryptocode
 
-hInst = windll.kernel32.GetModuleHandleW(0)
-buttons = []
+msg_handler = wingui.MessageHandler()
+main_window = wingui.Window(msg_handler, "Main", (480, 600))
 
-BTN_WIDTH = 300
 BTN_HEIGHT = 100
-LINES = 10
-
-def window_proc(hwnd: HWND, umsg: UINT, wparam: WPARAM, lparam: LPARAM) -> LRESULT:
-    si = SCROLLINFO()
-    si_pointer = pointer(si)
-    match umsg:
-        case WindowMessage.CREATE:
-            create_list_of_buttons(get_files(), hwnd)
-        case WindowMessage.DESTROY:
-            PostQuitMessage(0)
-            return 0
-        
-        case WindowMessage.SIZE:
-            height = (HIWORD(lparam))
-            width = (LOWORD(lparam))
-
-            si.cbSize = sizeof(si)
-            si.fMask = ScrollInfoMessage.RANGE | ScrollInfoMessage.PAGE
-            si.nMin = 0
-            print(width)
-            si.nMax = BTN_HEIGHT * 5 - 60
-            si.nPage = 1;
-            SetScrollInfo(hwnd, ScrollBarConstants.VERT, si_pointer, True)
-
-        case WindowMessage.COMMAND:
-            if wparam >= 100:
-                btn_clicked = ([button for button in buttons if button.hMenu == wparam])
-                filename = btn_clicked[0].btn_text
-                print(filename)
-                rect = RECT()
-                rect_p = pointer(rect)
-                # print(GetClientRect(hwnd, rect_p))
-                # print(rect.top, rect.bottom, rect.left, rect.right)
-        case WindowMessage.VSCROLL:
-            si.cbSize = sizeof(si)
-            si.fMask = ScrollInfoMessage.ALL
-            GetScrollInfo(hwnd, ScrollBarConstants.VERT, si_pointer)
-
-            yPos = si.nPos
-            match LOWORD(wparam).value:
-                case ScrollBarCommands.LINEUP:
-                    si.nPos -= 1
-                case ScrollBarCommands.TOP:
-                    si.nPos = si.nMin
-                case ScrollBarCommands.BOTTOM:
-                    si.nPos = si.nMax
-                case ScrollBarCommands.LINEUP:
-                    si.nPos -= 1
-                case ScrollBarCommands.LINEDOWN:
-                    si.nPos += 1
-                case ScrollBarCommands.PAGEUP:
-                    si.nPos -= si.nPage
-                case ScrollBarCommands.PAGEDOWN:
-                    si.nPos += si.nPage
-                case ScrollBarCommands.THUMBTRACK:
-                    si.nPos = si.nTrackPos
-
-            si.fMask = ScrollInfoMessage.POS
-            SetScrollInfo(hwnd, ScrollBarConstants.VERT, si_pointer, True)
-            GetScrollInfo(hwnd, ScrollBarConstants.VERT, si_pointer)
-            if(si.nPos != yPos):
-                ScrollWindowEx(hwnd, -0, (yPos - si.nPos), None, None, None, None, 0x0001|0x0002)
-                hdwp = BeginDeferWindowPos(1)
-                recent_hdwp = DeferWindowPos(hdwp, hwnd, None,  0, 0, 100, 100, 0x0020|0x0004|0x0001|0x0002)
-                EndDeferWindowPos(recent_hdwp)
-                UpdateWindow(hwnd)
-
-    return DefWindowProcW(hwnd, umsg, wparam, lparam)
+BTN_WIDTH = 300
 
 
-def create_window(className, windowName):
-    wnd_main = CreateWindowExW(
-        0,
-        className,
-        windowName,
-        WindowStyles.OVERLAPPED
-        | WindowStyles.CAPTION
-        | WindowStyles.SYSMENU
-        | WindowStyles.THICKFRAME
-        | WindowStyles.MINIMIZEBOX
-        | WindowStyles.MAXIMIZEBOX
-        | WindowStyles.CAPTION
-        | WindowStyles.VSCROLL,
-        CW_USEDEFAULT,
-        CW_USEDEFAULT,
-        600,
-        600,
-        0,
-        0,
-        hInst,
-        0,
-    )
-    if not wnd_main:
-        print("Window Creation Falid: ", GetLastError())
-        return
-    return wnd_main
+LOG_PATH = Path(__file__).parent / "log"
+
+
+def destroy_window(hwnd, lparam):
+    if hwnd:
+        DestroyWindow(hwnd)
+
+    return True
+
+
+def clear_screen(hwnd, callback_func, lparam):
+    EnumChildWindows(hwnd, WNDENUMPROC(callback_func), lparam)
 
 
 def get_files():
-    folder_path = Path(__file__).parent / "log"
-    return [file for file in listdir(folder_path) if file.endswith(".txt")]
+    return [file for file in os.listdir(LOG_PATH) if file.endswith(".txt")]
+
+
+def get_file_content(filename):
+    file_path = LOG_PATH / filename
+    with open(file_path, "r") as file:
+        return "".join([line.strip() for line in file.readlines()])
+
+
+def decrypt_file_content(file_content, password):
+    return cryptocode.decrypt(file_content, password)
+
+
+def make_password_box(parent):
+    dialog_box = wingui.Window(msg_handler, "Password", (300, 150), parent=parent)
+    password_box = wingui.EditText(
+        dialog_box, "", (10, 10), (260, 50), WindowStyle.BORDER | 0x0020
+    )
+    submit_button = wingui.Button(
+        dialog_box,
+        "Submit",
+        (150, 70),
+        (70, 30),
+        ButtonStyle.PUSHBUTTON,
+    )
+    close_button = wingui.Button(
+        dialog_box,
+        "Close",
+        (50, 70),
+        (70, 30),
+        ButtonStyle.PUSHBUTTON,
+        onclick=lambda: parent.close(),
+    )
+    return (dialog_box, password_box, submit_button, close_button)
+
+
+def password_submit_button_handler(dialog_box, password_box, folder_path, plain_text):
+    def func():
+        password = password_box.get_text()
+        encrypted_text = cryptocode.encrypt(plain_text, password)
+        with open(folder_path, "w") as file:
+            file.write(encrypted_text)
+
+    return func
+
+
+def save_encrypted_file(filename, file_display):
+    def func():
+        folder_path = LOG_PATH / filename
+        plain_text = file_display.get_text()
+        dialog_box, password_box, submit_button, close_button = make_password_box(
+            main_window
+        )
+        dialog_box.show()
+        submit_button.onclick = password_submit_button_handler(
+            dialog_box, password_box, folder_path, plain_text
+        )
+
+    return func
+
+
+def make_file_content_gui(content, filename):
+    file_display = wingui.EditText(
+        main_window,
+        content,
+        (10, 10),
+        (300, 300),
+        WindowStyle.BORDER
+        | EditStyles.MULTILINE
+        | WindowStyle.VSCROLL
+        | WindowStyle.HSCROLL,
+    )
+    save_button = wingui.Button(
+        main_window,
+        "Save",
+        (100, 350),
+        (70, 30),
+        ButtonStyle.PUSHBUTTON,
+        onclick=save_encrypted_file(filename, file_display),
+    )
+
+
+def display_file(button, dialog_box, edit_box):
+    def func():
+        if dialog_box:
+            clear_screen(main_window.handle, destroy_window, 0)
+            filename = button.text
+            password = edit_box.get_text()
+            file_content = get_file_content(filename)
+            decrypted = decrypt_file_content(file_content, password)
+            if not decrypted:
+                decrypted = "WRONG PASSWORD"
+            dialog_box.close()
+            make_file_content_gui(decrypted, filename)
+        else:
+            clear_screen(main_window.handle, destroy_window, 0)
+            make_file_content_gui("", button.text)
+
+    return func
+
+
+def display_dialog_box(button):
+    def create_dialog_box():
+        file = LOG_PATH / button.text
+        is_file_empty = os.path.getsize(file) == 0
+        if not is_file_empty:
+            (
+                dialog_box,
+                password_edit_box,
+                submit_button,
+                close_button,
+            ) = make_password_box(main_window)
+
+            submit_button.onclick = display_file(button, dialog_box, password_edit_box)
+
+            dialog_box.show()
+        else:
+            display_file(button, None, None)()
+
+    return create_dialog_box
+
 
 def create_list_of_buttons(filenames: list[str], parent_window):
     """
     Makes a list of button that have the file's name as their heading
     """
     x, y = 0, 0
-    for button_id, filename in enumerate(filenames, 100):
-        button = Button(filename, x, y, BTN_WIDTH, BTN_HEIGHT, parent_window, button_id)
-        button.create_button()
-        buttons.append(button)
+    for filename in filenames:
+        button = wingui.Button(
+            parent_window,
+            filename,
+            (x, y),
+            (BTN_WIDTH, BTN_HEIGHT),
+            ButtonStyle.PUSHBUTTON,
+        )
+        button.onclick = display_dialog_box(button)
         y += BTN_HEIGHT
 
-    return buttons
 
-
-
-
-def main():
-    wclassName = ctypes.c_wchar_p("My")
-    wname = ctypes.c_wchar_p("Left")
-    wndClass = WNDCLASSEXW()
-    wndClass.cbSize = sizeof(WNDCLASSEXW)
-    wndClass.style = ClassStyles.HREDRAW | ClassStyles.VREDRAW
-    wndClass.lpfnWndProc = WNDPROC(window_proc)
-    wndClass.cbClsExtra = 0
-    wndClass.cbWndExtra = 0
-    wndClass.hInstance = hInst
-    wndClass.hIcon = 0
-    wndClass.hCursor = 0
-    wndClass.hBrush = windll.gdi32.GetStockObject(0)
-    wndClass.lpszMenuName = 0
-    wndClass.lpszClassName = wclassName
-    wndClass.hIconSm = 0
-    RegisterClassExW(byref(wndClass))
-    wnd_main = create_window(wclassName, wname)
-    ShowWindow(wnd_main, 5)
-    UpdateWindow(wnd_main)
-
-    msg = MSG()
-    lpmsg = pointer(msg)
-    while (GetMessageW(lpmsg, 0, 0, 0)) != 0:
-        TranslateMessage(lpmsg)
-        DispatchMessageW(lpmsg)
-
-
-main()
+if __name__ == "__main__":
+    create_list_of_buttons(get_files(), main_window)
+    main_window.show()
+    msg_handler.run()
