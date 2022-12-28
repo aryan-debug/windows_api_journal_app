@@ -4,8 +4,8 @@ from ctypes import *
 
 from user32 import (
     ButtonStyle,
-    CreateWindowExW,
-    GetWindowLongPtrW,
+    CreateWindowExA,
+    GetWindowLongPtrA,
     WindowStyles,
     GetWindowLong,
 )
@@ -22,14 +22,11 @@ class Button:
     hMenu: HMENU
 
     def create_button(self):
-        button = CreateWindowExW(
+        button = CreateWindowExA(
             0,
-            "BUTTON",
+            b"BUTTON",
             self.btn_text,
-            WindowStyles.TABSTOP
-            | WindowStyles.VISIBLE
-            | WindowStyles.CHILD
-            | ButtonStyle.PUSHBUTTON,
+            WindowStyles.VISIBLE | WindowStyles.CHILD | ButtonStyle.PUSHBUTTON,
             self.x,
             self.y,
             self.width,
@@ -37,8 +34,9 @@ class Button:
             self.hwnd_parent,
             HMENU(self.hMenu),
             cast(
-                GetWindowLongPtrW(self.hwnd_parent, GetWindowLong.HINSTANCE), HINSTANCE
+                GetWindowLongPtrA(self.hwnd_parent, GetWindowLong.HINSTANCE), HINSTANCE
             ),
             None,
         )
+
         return button

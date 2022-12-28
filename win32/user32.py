@@ -158,6 +158,7 @@ class WindowMessage(enum.IntEnum):
     ACTIVATE = 0x0006
     COMMAND = 0x0111
     NOTIFY = 0x004E
+    VSCROLL = 0x0115
 
 
 class EditStyles(enum.IntFlag):
@@ -249,6 +250,54 @@ class GetWindowLong(enum.IntEnum):
     USERDATA = -21
     WNDPROC = -4
 
+
+class SCROLLINFO(ctypes.Structure):
+    _fields_ = [
+        ("cbSize", UINT),
+        ("fMask", UINT),
+        ("nMin", ctypes.c_int),
+        ("nMax", ctypes.c_int),
+        ("nPage", UINT),
+        ("nPos", ctypes.c_int),
+        ("nTrackPos", ctypes.c_int),
+    ]
+
+
+class ScrollInfoMessage(enum.IntEnum):
+    RANGE = 0x0001
+    PAGE = 0x0002
+    POS = 0x0004
+    DISABLENOSCROLL = 0x0008
+    TRACKPOS = 0x0010
+    ALL = RANGE | PAGE | POS | TRACKPOS
+
+
+class ScrollBarConstants(enum.IntEnum):
+    HORZ = 0
+    VERT = 1
+    CTL = 2
+    BOTH = 3
+
+
+class ScrollBarCommands(enum.IntEnum):
+    LINEUP = 0
+    LINELEFT = 0
+    LINEDOWN = 1
+    LINERIGHT = 1
+    PAGEUP = 2
+    PAGELEFT = 2
+    PAGEDOWN = 3
+    PAGERIGHT = 3
+    THUMBPOSITION = 4
+    THUMBTRACK = 5
+    TOP = 6
+    LEFT = 6
+    BOTTOM = 7
+    RIGHT = 7
+    ENDSCROLL = 8
+
+
+LPCSCROLLINFO = ctypes.POINTER(SCROLLINFO)
 
 try:
     GetWindowLongPtrW = ctypes.windll.user32.GetWindowLongPtrW
@@ -349,3 +398,55 @@ EnableWindow.restype = BOOL
 CloseWindow = ctypes.windll.user32.CloseWindow
 CloseWindow.argtypes = [HWND]
 CloseWindow.restype = BOOL
+
+GetScrollInfo = ctypes.windll.user32.GetScrollInfo
+GetScrollInfo.argtypes = [HWND, ctypes.c_int, LPCSCROLLINFO]
+GetScrollInfo.restype = BOOL
+
+ScrollWindowEx = ctypes.windll.user32.ScrollWindowEx
+ScrollWindowEx.argtypes = [
+    HWND,
+    ctypes.c_int,
+    ctypes.c_int,
+    LPRECT,
+    LPRECT,
+    HRGN,
+    LPRECT,
+    UINT,
+]
+ScrollWindowEx.restype = int
+
+SetScrollInfo = ctypes.windll.user32.SetScrollInfo
+SetScrollInfo.argtypes = [HWND, ctypes.c_int, LPCSCROLLINFO, BOOL]
+SetScrollInfo.restype = int
+
+BeginDeferWindowPos = ctypes.windll.user32.BeginDeferWindowPos
+BeginDeferWindowPos.argtypes = [ctypes.c_int]
+BeginDeferWindowPos.restype = HDWP
+
+DeferWindowPos = ctypes.windll.user32.DeferWindowPos
+DeferWindowPos.argtypes = [
+    HDWP,
+    HWND,
+    HWND,
+    ctypes.c_int,
+    ctypes.c_int,
+    ctypes.c_int,
+    ctypes.c_int,
+    ctypes.c_uint,
+]
+DeferWindowPos.restype = HDWP
+
+EndDeferWindowPos = ctypes.windll.user32.EndDeferWindowPos
+EndDeferWindowPos.argtypes = [HDWP]
+EndDeferWindowPos.restype = BOOL
+
+UpdateWindow = ctypes.windll.user32.UpdateWindow
+UpdateWindow.argtypes = [HWND]
+UpdateWindow.restype = BOOL
+
+LPRECT = ctypes.POINTER(RECT)
+
+GetClientRect = ctypes.windll.user32.GetClientRect
+GetClientRect.argtypes = [HWND, LPRECT]
+GetClientRect.restype = BOOL

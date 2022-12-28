@@ -1,19 +1,63 @@
-from turtle import clear, onclick
 import wingui
 from pathlib import Path
 import os
 from win32.user32 import *
 import cryptocode
 
-msg_handler = wingui.MessageHandler()
-main_window = wingui.Window(msg_handler, "Main", (480, 600))
-
 BTN_HEIGHT = 100
 BTN_WIDTH = 300
-
-
 LOG_PATH = Path(__file__).parent / "log"
+msg_handler = wingui.MessageHandler()
+main_window = wingui.Window(msg_handler, "Main", (480, 600), WindowStyle.VSCROLL)
 
+si = SCROLLINFO()
+si_pointer = ctypes.pointer(si)
+
+def size_handler(window, hwnd, umsg, waparam, lparam):
+    height = (HIWORD(lparam))
+    width = (LOWORD(lparam))
+    client_rect = RECT()
+    GetClientRect(hwnd, ctypes.byref(client_rect))
+    si.cbSize = ctypes.sizeof(si)
+    si.fMask = ScrollInfoMessage.RANGE
+    si.nMin = 0
+    si.nMax = len(window.controls)*BTN_HEIGHT-client_rect.bottom
+    si.nPage = 0;
+    SetScrollInfo(hwnd, ScrollBarConstants.VERT, si_pointer, True)
+
+def on_scroll_handler(hwnd, umsg, wparam, lparam):
+    si.cbSize = ctypes.sizeof(si)
+    si.fMask = ScrollInfoMessage.ALL
+    GetScrollInfo(hwnd, ScrollBarConstants.VERT, si_pointer)
+
+    yPos = si.nPos
+    match LOWORD(wparam).value:
+        case ScrollBarCommands.LINEUP:
+            si.nPos -= 1
+        case ScrollBarCommands.TOP:
+            si.nPos = si.nMin
+        case ScrollBarCommands.BOTTOM:
+            si.nPos = si.nMax
+        case ScrollBarCommands.LINEUP:
+            si.nPos -= 1
+        case ScrollBarCommands.LINEDOWN:
+            si.nPos += 1
+        case ScrollBarCommands.PAGEUP:
+            si.nPos -= si.nPage
+        case ScrollBarCommands.PAGEDOWN:
+            si.nPos += si.nPage
+        case ScrollBarCommands.THUMBTRACK:
+            si.nPos = si.nTrackPos
+
+    si.fMask = ScrollInfoMessage.POS
+    SetScrollInfo(hwnd, ScrollBarConstants.VERT, si_pointer, True)
+    GetScrollInfo(hwnd, ScrollBarConstants.VERT, si_pointer)
+    if(si.nPos != yPos):
+        ScrollWindowEx(hwnd, -0, (yPos - si.nPos), None, None, None, None, 0x0001|0x0002)
+        hdwp = BeginDeferWindowPos(1)
+        recent_hdwp = DeferWindowPos(hdwp, hwnd, None,  0, 0, 100, 100, 0x0020|0x0004|0x0001|0x0002)
+        EndDeferWindowPos(recent_hdwp)
+        UpdateWindow(hwnd)
 
 def destroy_window(hwnd, lparam):
     if hwnd:
@@ -168,5 +212,7 @@ def create_list_of_buttons(filenames: list[str], parent_window):
 
 if __name__ == "__main__":
     create_list_of_buttons(get_files(), main_window)
+    main_window.on_scroll = on_scroll_handler
+    main_window.size_handler = size_handler
     main_window.show()
     msg_handler.run()

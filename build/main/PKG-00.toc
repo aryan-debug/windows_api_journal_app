@@ -1,0 +1,656 @@
+('C:\\Users\\aryan\\Desktop\\projects\\journal_app\\windows_api_journal_app\\build\\main\\main.pkg',
+ {'BINARY': 1,
+  'DATA': 1,
+  'EXECUTABLE': 1,
+  'EXTENSION': 1,
+  'PYMODULE': 1,
+  'PYSOURCE': 1,
+  'PYZ': 0,
+  'SPLASH': 1},
+ [('PYZ-00.pyz',
+   'C:\\Users\\aryan\\Desktop\\projects\\journal_app\\windows_api_journal_app\\build\\main\\PYZ-00.pyz',
+   'PYZ'),
+  ('struct', 'C:\\Users\\aryan\\Python 3\\lib\\struct.pyo', 'PYMODULE'),
+  ('pyimod01_os_path',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\PyInstaller\\loader\\pyimod01_os_path.pyc',
+   'PYMODULE'),
+  ('pyimod02_archive',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\PyInstaller\\loader\\pyimod02_archive.pyc',
+   'PYMODULE'),
+  ('pyimod03_importers',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\PyInstaller\\loader\\pyimod03_importers.pyc',
+   'PYMODULE'),
+  ('pyimod04_ctypes',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\PyInstaller\\loader\\pyimod04_ctypes.pyc',
+   'PYMODULE'),
+  ('pyiboot01_bootstrap',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\PyInstaller\\loader\\pyiboot01_bootstrap.py',
+   'PYSOURCE'),
+  ('pyi_rth_inspect',
+   'C:\\Users\\aryan\\Python '
+   '3\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
+   'PYSOURCE'),
+  ('pyi_rth_pkgutil',
+   'C:\\Users\\aryan\\Python '
+   '3\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py',
+   'PYSOURCE'),
+  ('pyi_rth_multiprocessing',
+   'C:\\Users\\aryan\\Python '
+   '3\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py',
+   'PYSOURCE'),
+  ('pyi_rth_subprocess',
+   'C:\\Users\\aryan\\Python '
+   '3\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_subprocess.py',
+   'PYSOURCE'),
+  ('pyi_rth_pkgres',
+   'C:\\Users\\aryan\\Python '
+   '3\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgres.py',
+   'PYSOURCE'),
+  ('pyi_rth_win32api',
+   'C:\\Users\\aryan\\Python '
+   '3\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_win32api.py',
+   'PYSOURCE'),
+  ('pyi_rth_win32comgenpy',
+   'C:\\Users\\aryan\\Python '
+   '3\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_win32comgenpy.py',
+   'PYSOURCE'),
+  ('main',
+   'C:\\Users\\aryan\\Desktop\\projects\\journal_app\\windows_api_journal_app\\main.py',
+   'PYSOURCE'),
+  ('VCRUNTIME140.dll',
+   'C:\\Users\\aryan\\Python 3\\VCRUNTIME140.dll',
+   'BINARY'),
+  ('api-ms-win-crt-runtime-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-runtime-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-locale-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-locale-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-stdio-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-stdio-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-heap-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-heap-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-math-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-math-l1-1-0.dll',
+   'BINARY'),
+  ('python310.dll', 'C:\\Users\\aryan\\Python 3\\python310.dll', 'BINARY'),
+  ('api-ms-win-crt-convert-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-convert-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-string-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-string-l1-1-0.dll',
+   'BINARY'),
+  ('ucrtbase.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\ucrtbase.dll',
+   'BINARY'),
+  ('api-ms-win-crt-environment-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-environment-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-time-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-time-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-process-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-process-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-conio-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-conio-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-filesystem-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-filesystem-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-util-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-util-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-processthreads-l1-1-1.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-processthreads-l1-1-1.dll',
+   'BINARY'),
+  ('api-ms-win-core-handle-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-handle-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-rtlsupport-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-rtlsupport-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-string-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-string-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-interlocked-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-interlocked-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-errorhandling-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-errorhandling-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-processthreads-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-processthreads-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-console-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-console-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-timezone-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-timezone-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-localization-l1-2-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-localization-l1-2-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-file-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-file-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-file-l1-2-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-file-l1-2-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-libraryloader-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-libraryloader-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-synch-l1-2-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-synch-l1-2-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-processenvironment-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-processenvironment-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-namedpipe-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-namedpipe-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-sysinfo-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-sysinfo-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-synch-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-synch-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-datetime-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-datetime-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-memory-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-memory-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-heap-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-heap-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-file-l2-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-file-l2-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-profile-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-profile-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-debug-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-debug-l1-1-0.dll',
+   'BINARY'),
+  ('Cryptodome\\Cipher\\_raw_ofb.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Cipher\\_raw_ofb.pyd',
+   'BINARY'),
+  ('Cryptodome\\Cipher\\_raw_ctr.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Cipher\\_raw_ctr.pyd',
+   'BINARY'),
+  ('Cryptodome\\Cipher\\_raw_des3.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Cipher\\_raw_des3.pyd',
+   'BINARY'),
+  ('Cryptodome\\Hash\\_poly1305.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Hash\\_poly1305.pyd',
+   'BINARY'),
+  ('Cryptodome\\Hash\\_SHA256.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Hash\\_SHA256.pyd',
+   'BINARY'),
+  ('Cryptodome\\Hash\\_SHA384.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Hash\\_SHA384.pyd',
+   'BINARY'),
+  ('Cryptodome\\Hash\\_MD4.pyd',
+   'C:\\Users\\aryan\\Python 3\\lib\\site-packages\\Cryptodome\\Hash\\_MD4.pyd',
+   'BINARY'),
+  ('Cryptodome\\Cipher\\_raw_aesni.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Cipher\\_raw_aesni.pyd',
+   'BINARY'),
+  ('Cryptodome\\Cipher\\_raw_aes.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Cipher\\_raw_aes.pyd',
+   'BINARY'),
+  ('Cryptodome\\Cipher\\_chacha20.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Cipher\\_chacha20.pyd',
+   'BINARY'),
+  ('Cryptodome\\Cipher\\_pkcs1_decode.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Cipher\\_pkcs1_decode.pyd',
+   'BINARY'),
+  ('Cryptodome\\Math\\_modexp.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Math\\_modexp.pyd',
+   'BINARY'),
+  ('Cryptodome\\Hash\\_RIPEMD160.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Hash\\_RIPEMD160.pyd',
+   'BINARY'),
+  ('pywintypes310.dll',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\pywin32_system32\\pywintypes310.dll',
+   'BINARY'),
+  ('Cryptodome\\Cipher\\_raw_ecb.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Cipher\\_raw_ecb.pyd',
+   'BINARY'),
+  ('Cryptodome\\Util\\_strxor.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Util\\_strxor.pyd',
+   'BINARY'),
+  ('Cryptodome\\Hash\\_SHA1.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Hash\\_SHA1.pyd',
+   'BINARY'),
+  ('Cryptodome\\Cipher\\_Salsa20.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Cipher\\_Salsa20.pyd',
+   'BINARY'),
+  ('Cryptodome\\Hash\\_MD2.pyd',
+   'C:\\Users\\aryan\\Python 3\\lib\\site-packages\\Cryptodome\\Hash\\_MD2.pyd',
+   'BINARY'),
+  ('pythoncom310.dll',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\pywin32_system32\\pythoncom310.dll',
+   'BINARY'),
+  ('Cryptodome\\Hash\\_BLAKE2b.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Hash\\_BLAKE2b.pyd',
+   'BINARY'),
+  ('Cryptodome\\Hash\\_BLAKE2s.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Hash\\_BLAKE2s.pyd',
+   'BINARY'),
+  ('Cryptodome\\Cipher\\_raw_blowfish.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Cipher\\_raw_blowfish.pyd',
+   'BINARY'),
+  ('Cryptodome\\Cipher\\_raw_cfb.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Cipher\\_raw_cfb.pyd',
+   'BINARY'),
+  ('Cryptodome\\Util\\_cpuid_c.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Util\\_cpuid_c.pyd',
+   'BINARY'),
+  ('Cryptodome\\Hash\\_keccak.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Hash\\_keccak.pyd',
+   'BINARY'),
+  ('Cryptodome\\Cipher\\_raw_cbc.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Cipher\\_raw_cbc.pyd',
+   'BINARY'),
+  ('Cryptodome\\PublicKey\\_ec_ws.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\PublicKey\\_ec_ws.pyd',
+   'BINARY'),
+  ('Cryptodome\\Cipher\\_raw_cast.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Cipher\\_raw_cast.pyd',
+   'BINARY'),
+  ('Cryptodome\\Protocol\\_scrypt.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Protocol\\_scrypt.pyd',
+   'BINARY'),
+  ('Cryptodome\\Cipher\\_raw_eksblowfish.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Cipher\\_raw_eksblowfish.pyd',
+   'BINARY'),
+  ('Cryptodome\\Hash\\_ghash_portable.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Hash\\_ghash_portable.pyd',
+   'BINARY'),
+  ('Cryptodome\\Cipher\\_raw_des.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Cipher\\_raw_des.pyd',
+   'BINARY'),
+  ('Cryptodome\\Hash\\_SHA224.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Hash\\_SHA224.pyd',
+   'BINARY'),
+  ('Cryptodome\\Hash\\_MD5.pyd',
+   'C:\\Users\\aryan\\Python 3\\lib\\site-packages\\Cryptodome\\Hash\\_MD5.pyd',
+   'BINARY'),
+  ('Cryptodome\\Hash\\_ghash_clmul.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Hash\\_ghash_clmul.pyd',
+   'BINARY'),
+  ('Cryptodome\\Cipher\\_raw_arc2.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Cipher\\_raw_arc2.pyd',
+   'BINARY'),
+  ('libopenblas.XWYDX2IKJW2NMTWSFYNGFUWKQU3LYTCZ.gfortran-win_amd64.dll',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\numpy\\.libs\\libopenblas.XWYDX2IKJW2NMTWSFYNGFUWKQU3LYTCZ.gfortran-win_amd64.dll',
+   'BINARY'),
+  ('Cryptodome\\Cipher\\_raw_ocb.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Cipher\\_raw_ocb.pyd',
+   'BINARY'),
+  ('Cryptodome\\Cipher\\_ARC4.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Cipher\\_ARC4.pyd',
+   'BINARY'),
+  ('Cryptodome\\Hash\\_SHA512.pyd',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\Cryptodome\\Hash\\_SHA512.pyd',
+   'BINARY'),
+  ('win32trace',
+   'C:\\Users\\aryan\\Python 3\\lib\\site-packages\\win32\\win32trace.pyd',
+   'EXTENSION'),
+  ('win32ui',
+   'C:\\Users\\aryan\\Python 3\\lib\\site-packages\\Pythonwin\\win32ui.pyd',
+   'EXTENSION'),
+  ('_ctypes', 'C:\\Users\\aryan\\Python 3\\DLLs\\_ctypes.pyd', 'EXTENSION'),
+  ('_socket', 'C:\\Users\\aryan\\Python 3\\DLLs\\_socket.pyd', 'EXTENSION'),
+  ('select', 'C:\\Users\\aryan\\Python 3\\DLLs\\select.pyd', 'EXTENSION'),
+  ('_hashlib', 'C:\\Users\\aryan\\Python 3\\DLLs\\_hashlib.pyd', 'EXTENSION'),
+  ('_ssl', 'C:\\Users\\aryan\\Python 3\\DLLs\\_ssl.pyd', 'EXTENSION'),
+  ('unicodedata',
+   'C:\\Users\\aryan\\Python 3\\DLLs\\unicodedata.pyd',
+   'EXTENSION'),
+  ('numpy.core._multiarray_tests',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\numpy\\core\\_multiarray_tests.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('_elementtree',
+   'C:\\Users\\aryan\\Python 3\\DLLs\\_elementtree.pyd',
+   'EXTENSION'),
+  ('pyexpat', 'C:\\Users\\aryan\\Python 3\\DLLs\\pyexpat.pyd', 'EXTENSION'),
+  ('numpy.core._multiarray_umath',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\numpy\\core\\_multiarray_umath.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('win32pdh',
+   'C:\\Users\\aryan\\Python 3\\lib\\site-packages\\win32\\win32pdh.pyd',
+   'EXTENSION'),
+  ('numpy.linalg.lapack_lite',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\numpy\\linalg\\lapack_lite.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('_overlapped',
+   'C:\\Users\\aryan\\Python 3\\DLLs\\_overlapped.pyd',
+   'EXTENSION'),
+  ('_queue', 'C:\\Users\\aryan\\Python 3\\DLLs\\_queue.pyd', 'EXTENSION'),
+  ('_multiprocessing',
+   'C:\\Users\\aryan\\Python 3\\DLLs\\_multiprocessing.pyd',
+   'EXTENSION'),
+  ('_asyncio', 'C:\\Users\\aryan\\Python 3\\DLLs\\_asyncio.pyd', 'EXTENSION'),
+  ('numpy.random.mtrand',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\numpy\\random\\mtrand.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.random._sfc64',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\numpy\\random\\_sfc64.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.random._philox',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\numpy\\random\\_philox.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.random._pcg64',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\numpy\\random\\_pcg64.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.random._mt19937',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\numpy\\random\\_mt19937.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.random.bit_generator',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\numpy\\random\\bit_generator.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.random._generator',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\numpy\\random\\_generator.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.random._bounded_integers',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\numpy\\random\\_bounded_integers.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.random._common',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\numpy\\random\\_common.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.fft._pocketfft_internal',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\numpy\\fft\\_pocketfft_internal.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.linalg._umath_linalg',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\numpy\\linalg\\_umath_linalg.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('_lzma', 'C:\\Users\\aryan\\Python 3\\DLLs\\_lzma.pyd', 'EXTENSION'),
+  ('_bz2', 'C:\\Users\\aryan\\Python 3\\DLLs\\_bz2.pyd', 'EXTENSION'),
+  ('_decimal', 'C:\\Users\\aryan\\Python 3\\DLLs\\_decimal.pyd', 'EXTENSION'),
+  ('_win32sysloader',
+   'C:\\Users\\aryan\\Python 3\\lib\\site-packages\\win32\\_win32sysloader.pyd',
+   'EXTENSION'),
+  ('win32api',
+   'C:\\Users\\aryan\\Python 3\\lib\\site-packages\\win32\\win32api.pyd',
+   'EXTENSION'),
+  ('_uuid', 'C:\\Users\\aryan\\Python 3\\DLLs\\_uuid.pyd', 'EXTENSION'),
+  ('win32com.shell.shell',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\win32comext\\shell\\shell.pyd',
+   'EXTENSION'),
+  ('_cffi_backend',
+   'C:\\Users\\aryan\\Python '
+   '3\\lib\\site-packages\\_cffi_backend.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('api-ms-win-crt-utility-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-utility-l1-1-0.dll',
+   'BINARY'),
+  ('mfc140u.dll',
+   'C:\\Users\\aryan\\Python 3\\lib\\site-packages\\Pythonwin\\mfc140u.dll',
+   'BINARY'),
+  ('libffi-7.dll', 'C:\\Users\\aryan\\Python 3\\DLLs\\libffi-7.dll', 'BINARY'),
+  ('libcrypto-1_1.dll',
+   'C:\\Users\\aryan\\Python 3\\DLLs\\libcrypto-1_1.dll',
+   'BINARY'),
+  ('libssl-1_1.dll',
+   'C:\\Users\\aryan\\Python 3\\DLLs\\libssl-1_1.dll',
+   'BINARY'),
+  ('api-ms-win-crt-multibyte-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-multibyte-l1-1-0.dll',
+   'BINARY'),
+  ('base_library.zip',
+   'C:\\Users\\aryan\\Desktop\\projects\\journal_app\\windows_api_journal_app\\build\\main\\base_library.zip',
+   'DATA'),
+  ('importlib_metadata-4.8.1.dist-info\\LICENSE',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\importlib_metadata-4.8.1.dist-info\\LICENSE',
+   'DATA'),
+  ('importlib_metadata-4.8.1.dist-info\\RECORD',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\importlib_metadata-4.8.1.dist-info\\RECORD',
+   'DATA'),
+  ('importlib_metadata-4.8.1.dist-info\\METADATA',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\importlib_metadata-4.8.1.dist-info\\METADATA',
+   'DATA'),
+  ('importlib_metadata-4.8.1.dist-info\\top_level.txt',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\importlib_metadata-4.8.1.dist-info\\top_level.txt',
+   'DATA'),
+  ('importlib_metadata-4.8.1.dist-info\\INSTALLER',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\importlib_metadata-4.8.1.dist-info\\INSTALLER',
+   'DATA'),
+  ('importlib_metadata-4.8.1.dist-info\\WHEEL',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\importlib_metadata-4.8.1.dist-info\\WHEEL',
+   'DATA'),
+  ('altgraph-0.17.dist-info\\INSTALLER',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\altgraph-0.17.dist-info\\INSTALLER',
+   'DATA'),
+  ('setuptools-57.4.0.dist-info\\METADATA',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\setuptools-57.4.0.dist-info\\METADATA',
+   'DATA'),
+  ('setuptools-57.4.0.dist-info\\INSTALLER',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\setuptools-57.4.0.dist-info\\INSTALLER',
+   'DATA'),
+  ('altgraph-0.17.dist-info\\RECORD',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\altgraph-0.17.dist-info\\RECORD',
+   'DATA'),
+  ('jsonschema-3.2.0.dist-info\\INSTALLER',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\jsonschema-3.2.0.dist-info\\INSTALLER',
+   'DATA'),
+  ('jsonschema-3.2.0.dist-info\\top_level.txt',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\jsonschema-3.2.0.dist-info\\top_level.txt',
+   'DATA'),
+  ('pyinstaller-5.1.dist-info\\COPYING.txt',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\pyinstaller-5.1.dist-info\\COPYING.txt',
+   'DATA'),
+  ('jsonschema-3.2.0.dist-info\\COPYING',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\jsonschema-3.2.0.dist-info\\COPYING',
+   'DATA'),
+  ('pyinstaller-5.1.dist-info\\top_level.txt',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\pyinstaller-5.1.dist-info\\top_level.txt',
+   'DATA'),
+  ('setuptools-57.4.0.dist-info\\RECORD',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\setuptools-57.4.0.dist-info\\RECORD',
+   'DATA'),
+  ('jsonschema-3.2.0.dist-info\\entry_points.txt',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\jsonschema-3.2.0.dist-info\\entry_points.txt',
+   'DATA'),
+  ('jsonschema-3.2.0.dist-info\\WHEEL',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\jsonschema-3.2.0.dist-info\\WHEEL',
+   'DATA'),
+  ('altgraph-0.17.dist-info\\WHEEL',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\altgraph-0.17.dist-info\\WHEEL',
+   'DATA'),
+  ('setuptools-57.4.0.dist-info\\WHEEL',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\setuptools-57.4.0.dist-info\\WHEEL',
+   'DATA'),
+  ('setuptools-57.4.0.dist-info\\REQUESTED',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\setuptools-57.4.0.dist-info\\REQUESTED',
+   'DATA'),
+  ('pyinstaller-5.1.dist-info\\entry_points.txt',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\pyinstaller-5.1.dist-info\\entry_points.txt',
+   'DATA'),
+  ('setuptools-57.4.0.dist-info\\entry_points.txt',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\setuptools-57.4.0.dist-info\\entry_points.txt',
+   'DATA'),
+  ('jsonschema-3.2.0.dist-info\\METADATA',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\jsonschema-3.2.0.dist-info\\METADATA',
+   'DATA'),
+  ('altgraph-0.17.dist-info\\METADATA',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\altgraph-0.17.dist-info\\METADATA',
+   'DATA'),
+  ('pyinstaller-5.1.dist-info\\WHEEL',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\pyinstaller-5.1.dist-info\\WHEEL',
+   'DATA'),
+  ('setuptools-57.4.0.dist-info\\top_level.txt',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\setuptools-57.4.0.dist-info\\top_level.txt',
+   'DATA'),
+  ('pyinstaller-5.1.dist-info\\INSTALLER',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\pyinstaller-5.1.dist-info\\INSTALLER',
+   'DATA'),
+  ('pyinstaller-5.1.dist-info\\RECORD',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\pyinstaller-5.1.dist-info\\RECORD',
+   'DATA'),
+  ('jsonschema-3.2.0.dist-info\\RECORD',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\jsonschema-3.2.0.dist-info\\RECORD',
+   'DATA'),
+  ('setuptools-57.4.0.dist-info\\LICENSE',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\setuptools-57.4.0.dist-info\\LICENSE',
+   'DATA'),
+  ('altgraph-0.17.dist-info\\zip-safe',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\altgraph-0.17.dist-info\\zip-safe',
+   'DATA'),
+  ('altgraph-0.17.dist-info\\top_level.txt',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\altgraph-0.17.dist-info\\top_level.txt',
+   'DATA'),
+  ('pyinstaller-5.1.dist-info\\METADATA',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\pyinstaller-5.1.dist-info\\METADATA',
+   'DATA'),
+  ('altgraph-0.17.dist-info\\LICENSE',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\altgraph-0.17.dist-info\\LICENSE',
+   'DATA'),
+  ('pyinstaller-5.1.dist-info\\REQUESTED',
+   'c:\\users\\aryan\\python '
+   '3\\lib\\site-packages\\pyinstaller-5.1.dist-info\\REQUESTED',
+   'DATA')],
+ False,
+ False,
+ False,
+ [],
+ None,
+ None,
+ None)

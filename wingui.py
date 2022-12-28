@@ -35,6 +35,7 @@ class Window:
         msg_handler: MessageHandler,
         title: str,
         dimensions: Tuple[int, int],
+        style=0,
         parent=None,
         onclose=None,
     ):
@@ -80,7 +81,8 @@ class Window:
             user32.WindowStyle.OVERLAPPED
             | user32.WindowStyle.CAPTION
             | user32.WindowStyle.SYSMENU
-            | user32.WindowStyle.MINIMIZEBOX,
+            | user32.WindowStyle.MINIMIZEBOX
+            | style,
             user32.CW_USEDEFAULT,
             user32.CW_USEDEFAULT,
             self.dimensions[0],
@@ -121,6 +123,9 @@ class Window:
 
             if not self.parent:
                 user32.PostQuitMessage(0)
+        elif umsg == user32.WindowMessage.SIZE:
+            if hasattr(self, "size_handler"):
+                self.size_handler(self, hwnd, umsg, wparam, lparam)
         elif umsg == user32.WindowMessage.CLOSE:
             user32.DestroyWindow(hwnd)
         elif umsg == user32.WindowMessage.COMMAND:
@@ -131,6 +136,9 @@ class Window:
             for control in self.controls:
                 if control_id == control.control_id and control.onclick:
                     control.onclick()
+        elif umsg == user32.WindowMessage.VSCROLL:
+            if hasattr(self, "on_scroll"):
+                self.on_scroll(hwnd, umsg, wparam, lparam)
 
         return user32.DefWindowProcW(hwnd, umsg, wparam, lparam)
 
